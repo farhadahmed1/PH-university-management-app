@@ -5,11 +5,12 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from "@ant-design/icons";
+import { NavLink, Outlet } from "react-router-dom";
 
 const items: MenuProps["items"] = [
   {
-    key: "0",
-    label: "Dashboard",
+    key: "Dashboard",
+    label: <NavLink to="/admin/dashboard">Dashboard</NavLink>,
     icon: <DashboardOutlined />,
   },
   {
@@ -18,16 +19,16 @@ const items: MenuProps["items"] = [
     icon: <UserOutlined />,
     children: [
       {
-        key: "1",
-        label: "Create Admin ",
+        key: "Create Admin ",
+        label: <NavLink to="/admin/create-admin">Create Admin</NavLink>,
       },
       {
-        key: "2",
-        label: "Create Faculty ",
+        key: "Create Faculty ",
+        label: <NavLink to="/admin/create-faculty">Create Faculty</NavLink>,
       },
       {
-        key: "3",
-        label: "Create Student",
+        key: "Create Student",
+        label: <NavLink to="/admin/create-student">Create Student</NavLink>,
       },
     ],
   },
@@ -79,7 +80,7 @@ const MainLayout = () => {
               minHeight: 360,
             }}
           >
-            <h1> The Main content is coming soon </h1>
+            <Outlet />
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>

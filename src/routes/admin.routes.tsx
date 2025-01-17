@@ -27,6 +27,11 @@ export const adminPaths = [
         path: "create-student",
         element: <CreateStudent />,
       },
+      {
+        name: "CreateMember",
+        path: "create-member",
+        element: <CreateStudent />,
+      },
     ],
   },
 ];

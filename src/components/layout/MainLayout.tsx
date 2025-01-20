@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import { useAppDispatch } from "../../redux/features/hooks";
 import { logout } from "../../redux/features/auth/authSlice";
+import { toast } from "sonner";
 
 // const items: MenuProps["items"] = [
 //   {
@@ -42,6 +43,7 @@ const MainLayout = () => {
   const dispatch = useAppDispatch();
   const handleLogOut = () => {
     dispatch(logout());
+    toast.success("Logout user", { duration: 2000 });
   };
   return (
     <Layout style={{ height: "100vh" }}>

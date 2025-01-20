@@ -1,10 +1,11 @@
 import { Button } from "antd";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { useAppDispatch } from "../../redux/features/hooks";
 import { useLoginMutation } from "../../redux/features/auth/authApi";
-import { setUser } from "../../redux/features/auth/authSlice";
+import { setUser, TUser } from "../../redux/features/auth/authSlice";
 import { verifyToken } from "../../utils/verifyToken";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,23 +14,31 @@ const Login = () => {
   const { register, handleSubmit } = useForm({
     defaultValues: { userId: "A-0001", password: "123F@r" },
   });
-  const [login, { error }] = useLoginMutation();
+  const [login] = useLoginMutation();
   // console.log(data);
   // console.log(error);
 
-  const onSubmit = async (data) => {
-    const userInfo = {
-      id: data.userId,
-      password: data.password,
-    };
-    const res = await login(userInfo).unwrap();
-    //console.log(res);
+  const onSubmit = async (data: FieldValues) => {
+    const toastId = toast.loading(" Logging in");
+    try {
+      const userInfo = {
+        id: data.userId,
+        password: data.password,
+      };
+      const res = await login(userInfo).unwrap();
+      //console.log(res);
 
-    const user = verifyToken(res.data.accessToken);
-    console.log(user);
+      const user = verifyToken(res.data.accessToken) as TUser;
+      console.log(user);
 
-    dispatch(setUser({ user: user, token: res.data.accessToken }));
-    navigate(`/${user.role}/dashboard`);
+      dispatch(setUser({ user: user, token: res.data.accessToken }));
+      toast.success("Logged in successfully", { id: toastId, duration: 2000 });
+      navigate(`/${user.role}/dashboard`);
+    } catch (err) {
+      toast.error("Invalid ID or password", { id: toastId, duration: 2000 });
+      console.error(err);
+      // Handle error here
+    }
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

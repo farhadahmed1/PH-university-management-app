@@ -18,21 +18,21 @@ export const adminPaths = [
         path: "academic-semester",
         element: <AcademicSemester />,
       },
-      {
-        name: "CreateFaculty ",
-        path: "create-faculty",
-        element: <CreateFaculty />,
-      },
-      {
-        name: "CreateStudent",
-        path: "create-student",
-        element: <CreateStudent />,
-      },
-      {
-        name: "CreateMember",
-        path: "create-member",
-        element: <CreateStudent />,
-      },
+      // {
+      //   name: "CreateFaculty ",
+      //   path: "create-faculty",
+      //   element: <CreateFaculty />,
+      // },
+      // {
+      //   name: "CreateStudent",
+      //   path: "create-student",
+      //   element: <CreateStudent />,
+      // },
+      // {
+      //   name: "CreateMember",
+      //   path: "create-member",
+      //   element: <CreateStudent />,
+      // },
     ],
   },
   {

@@ -34,10 +34,10 @@ const Login = () => {
 
       dispatch(setUser({ user: user, token: res.data.accessToken }));
       console.log(user);
-      toast.success("Logged in successfully", { id: toastId, duration: 2000 });
+      toast.success("logged in successfully", { id: toastId, duration: 2000 });
       navigate(`/${user.role}/dashboard`);
     } catch (err) {
-      toast.error("Invalid ID or password", { id: toastId, duration: 2000 });
+      toast.error("user not found", { id: toastId, duration: 2000 });
       console.error(err);
       // Handle error here
     }

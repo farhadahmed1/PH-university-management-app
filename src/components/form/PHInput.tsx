@@ -1,6 +1,5 @@
 import { Input } from "antd";
 import { Controller } from "react-hook-form";
-import { type } from "./../../types/sidebar.types";
 
 type TInputProps = {
   type: string;

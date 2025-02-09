@@ -7,7 +7,6 @@ const AcademicSemester = () => {
   return (
     <div>
       <h2>Academic Semester </h2>
-      <p>This is the Academic Semester page</p>
     </div>
   );
 };

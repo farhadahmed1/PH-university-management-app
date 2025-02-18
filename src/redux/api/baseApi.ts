@@ -9,7 +9,6 @@ import {
 } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../features/store";
 import { logout, setUser } from "../features/auth/authSlice";
-import { toast } from "sonner";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:5000/api/v1",
